@@ -14,16 +14,25 @@
 <div class="kpis" id="pKpis"></div>
 <div class="card"><h2>📈 Vývoj hodnoty portfolia</h2><div class="chartlegend"><span><i style="background:#d6a141"></i>Hodnota</span><span><i style="background:#97a8b9"></i>Vklady</span><span><i style="background:#7874e2"></i>Kupní síla</span></div><svg class="chart" id="pChart" viewBox="0 0 960 320" aria-label="Vývoj investic" role="img"></svg></div>
 <div class="card gap"><h2>Hodnota jednotlivých aktiv</h2><div id="breakdown"></div></div></section>
-<section class="view" id="r"><div class="card"><h2>💰 Moje měsíční renta</h2><p class="explain">Zjistěte, kolik měsíčně lze čerpat a jak dlouho portfolio vydrží. Výplatu lze navyšovat o inflaci. Model počítá měsíční zhodnocení a následnou výplatu. Doba do vyčerpání se simuluje nejvýše 100 let.</p>
+<section class="view" id="r"><div class="card">
+<h2>💰 Moje měsíční renta</h2>
+<p class="explain">Vyberte, jak dlouho chcete rentu vyplácet. U průběžné renty lze přepočítávat plán vždy po 5 nebo 10 letech. Všechny výsledky jsou v Kč a vycházejí z modelového, nikoli zaručeného výnosu.</p>
 <div class="gridR">
 <div class="control"><label for="capitalSource">Zdroj kapitálu</label><select class="field" id="capitalSource"><option value="portfolio">Výsledek portfolia</option><option value="custom">Vlastní částka</option></select></div>
 <div class="control"><label for="capital">Počáteční kapitál (Kč)</label><input class="field" type="number" id="capital" min="0" value="3000000" step="10000"></div>
 <div class="control"><label for="renta">Požadovaná renta (Kč/měs.)</label><input class="field" type="number" id="renta" min="0" value="20000" step="500"></div>
-<div class="control"><label for="rYears">Doba čerpání (let)</label><input class="field" type="number" id="rYears" min="1" max="60" value="25"></div>
+<div class="control"><label for="rentMode">Způsob čerpání renty</label><select class="field" id="rentMode"><option value="fixed">Na zvolenou dobu</option><option value="rolling">Průběžně (plán po etapách)</option></select></div>
+<div class="control" id="rTermWrap"><label for="rTerm">Rentu vyplácet po dobu</label><select class="field" id="rTerm"><option value="5">5 let</option><option value="10">10 let</option><option value="15">15 let</option><option value="20">20 let</option><option value="25" selected>25 let</option><option value="30">30 let</option><option value="custom">Vlastní počet let</option></select></div>
+<div class="control" id="rCustomWrap" style="display:none"><label for="rYears">Vlastní doba čerpání (roky)</label><input class="field" type="number" id="rYears" min="1" max="60" value="25"></div>
+<div class="control" id="rReviewWrap" style="display:none"><label for="rReview">Vyhodnocení průběžné renty po</label><select class="field" id="rReview"><option value="5">5 letech</option><option value="10">10 letech</option></select></div>
 <div class="control"><label for="rRate">Výnos při čerpání (% p. a.)</label><input class="field" type="number" id="rRate" min="-90" max="100" step=".1" value="5"></div>
 <div class="control"><label for="rInfl">Inflace při čerpání (% p. a.)</label><input class="field" type="number" id="rInfl" min="0" max="30" step=".1" value="1"></div>
-</div><label class="check"><input id="index" type="checkbox" checked> Renta se každý rok navyšuje o inflaci</label></div>
-<div class="kpis" id="rKpis"></div><div class="card"><h2>📊 Vývoj renty a zůstatku</h2><div class="chartlegend"><span><i style="background:#d6a141"></i>Zbývající kapitál</span><span><i style="background:#65aa97"></i>Celkem vyplaceno</span></div><svg class="chart" id="rChart" viewBox="0 0 960 320" aria-label="Doba čerpání" role="img"></svg><p id="rStatus" class="explain"></p></div></section>
+</div>
+<label class="check"><input id="index" type="checkbox" checked> Renta se každý rok navyšuje o inflaci</label>
+<p class="note" id="rentModeNote">Na zvolenou dobu: vypočteme maximální počáteční měsíční rentu pro daný počet let. Počítá se s možností postupného vyčerpání kapitálu.</p>
+</div>
+<div class="kpis" id="rKpis"></div>
+<div class="card"><h2>📊 Vývoj výplat a zůstatku</h2><div class="chartlegend"><span><i style="background:#d6a141"></i>Zbývající kapitál</span><span><i style="background:#65aa97"></i>Celkem vyplaceno</span></div><svg class="chart" id="rChart" viewBox="0 0 960 320" aria-label="Průběh čerpání" role="img"></svg><p id="rStatus" class="explain"></p></div></section>
 <section class="view" id="h"><div class="columns"><div class="card"><h2>📚 Výnosy přepočítané do Kč</h2><p class="source">Zlato a stříbro: změna cen v USD mezi konci roků 2005 a 2025 × průměrné historické kurzy USD/CZK příslušných roků. Bitcoin: období 2014–2025. Tato kombinace koncových cen s průměrným ročním kurzem je <b>orientační</b>; přesný výpočet konkrétní investice vyžaduje kurz stejného dne jako nákup.</p><div id="histSummary"></div><p class="note">Bitcoin nemá 20letou veřejnou tržní historii. Permanentní fond nemá 20letou historii a byl založen až v roce 2024; jeho budoucí výnos 7 % je pouze upravitelný modelový předpoklad. Pro hotovost volíte vlastní sazbu.</p><p class="source"><b>Podklady a kontrola:</b><a href="https://fred.stlouisfed.org/data/CCUSMA02CZA618N" target="_blank" rel="noopener">OECD / FRED – průměrné roční USD/CZK</a><a href="https://goldpricetoday.info/gold-price-history/" target="_blank" rel="noopener">Historické ceny zlata USD/oz</a><a href="https://silverprice.corgano.com/silver-price-history" target="_blank" rel="noopener">Historické ceny stříbra USD/oz</a><a href="https://bartez.cz/cena-bitcoinu/" target="_blank" rel="noopener">Bitcoin – historická data a ceny v Kč</a></p></div>
 <div class="card"><h2>Historické orientační přepočty</h2><div class="scroll"><table class="hist"><thead><tr><th>Rok</th><th>USD/CZK</th><th>Zlato Kč/oz</th><th>Stříbro Kč/oz</th><th>BTC Kč</th></tr></thead><tbody id="histTable"></tbody></table></div><p class="explain">Tržní referenční ceny, nikoli prodejní ceny v ČR. Nezahrnují spready, skladování, DPH ani daň z případného výnosu.</p></div></div></section>
 <div class="foot">⚖️ Nezávazná investiční a rentová simulace bez garance výsledků, daňového poradenství a personalizovaného doporučení. U stříbra uloženého v celním skladu nemusí „bez DPH“ znamenat osvobození po dovozu do ČR. Historické výnosy neslibují budoucí zhodnocení. Reálný výsledek mohou zásadně změnit kolísání trhů, měnové kurzy, poplatky, pravidla výběru a zdanění.</div>
@@ -69,12 +78,48 @@ $('breakdown').innerHTML=ps.map((a,i)=>'<div class="resultline"><span><i class="
 function rentSim(cap,r,ir,first,months,indexed){var balance=cap,paid=0,rows=[{m:0,balance:cap,paid:0}],end=months,term=0;var mr=Math.pow(1+r/100,1/12)-1;
 for(var m=1;m<=months;m++){balance*=1+mr;var w=first*(indexed?Math.pow(1+ir/100,Math.floor((m-1)/12)):1);if(balance<w-1e-7){paid+=Math.max(0,balance);balance=0;end=m;term=1;rows.push({m:m,balance:0,paid:paid});break}balance-=w;paid+=w;rows.push({m:m,balance:balance,paid:paid})}
 return {balance:balance,paid:paid,rows:rows,end:end,term:term}}
-function calculateRent(){var cap=get('capital',0,1e12),want=get('renta',0,1e10),yrs=Math.round(get('rYears',1,60)),r=get('rRate',-90,100),i=get('rInfl',0,30),ix=$('index').checked,months=yrs*12;
-var out=rentSim(cap,r,i,want,months,ix),lo=0,hi=Math.max(1,cap),best=0;for(var k=0;k<75;k++){var mid=(lo+hi)/2,q=rentSim(cap,r,i,mid,months,ix);if(q.term||q.balance<0.0001){hi=mid}else{lo=mid} }best=lo;
-var lifetime=rentSim(cap,r,i,want,1200,ix);var how=want===0?'Bez výběrů':lifetime.term?F(lifetime.end/12,1)+' roku':'100+ let';
-showKpis('rKpis',[['Max. počáteční renta',money(best)+'/měs.'],['Portfolio vydrží',how],['Celkem vyplaceno',short(out.paid)],['Zůstatek',short(out.balance)]]);
-svgChart('rChart',out.rows,['balance','paid'],['#d6a141','#65aa97'],months);
-$('rStatus').textContent=out.term?'⚠ Při zadané rentě dojde kapitál přibližně za '+F(out.end/12,1)+' roku.':lifetime.term?'Kapitál vydrží celé zvolené období, ale při pokračujícím čerpání jej model vyčerpá přibližně za '+F(lifetime.end/12,1)+' roku.':'Při zadané rentě v modelu kapitál nedojde ani za 100 let. Skutečné trhy ovšem kolísají.'}
+function rentLimit(cap,r,inf,months,indexed,floor){
+ if(cap<=0)return 0;
+ var noRent=rentSim(cap,r,inf,0,months,indexed);
+ if(noRent.balance+0.0001<floor)return 0;
+ var low=0,high=Math.max(1,cap);
+ for(var k=0;k<65;k++){
+  var mid=(low+high)/2,o=rentSim(cap,r,inf,mid,months,indexed);
+  if(o.term||o.balance+0.00001<floor)high=mid;else low=mid;
+ }
+ return low;
+}
+function calculateRent(){
+ var cap=get('capital',0,1e12),want=get('renta',0,1e10),r=get('rRate',-90,100),inf=get('rInfl',0,30),ix=$('index').checked;
+ var rolling=$('rentMode').value==='rolling';
+ $('rTermWrap').style.display=rolling?'none':'block';
+ $('rCustomWrap').style.display=(!rolling&&$('rTerm').value==='custom')?'block':'none';
+ $('rReviewWrap').style.display=rolling?'block':'none';
+ var yrs=rolling?Number($('rReview').value):$('rTerm').value==='custom'?Math.round(get('rYears',1,60)):Number($('rTerm').value);
+ var months=yrs*12,out=rentSim(cap,r,inf,want,months,ix),floor=rolling?cap*Math.pow(1+inf/100,yrs):0;
+ var limit=rentLimit(cap,r,inf,months,ix,floor);
+ if(rolling){
+  var base=rentSim(cap,r,inf,0,months,ix);
+  showKpis('rKpis',[
+   ['Renta při zachování kupní síly kapitálu',money(limit)+'/měs.'],
+   ['Kontrola plánu po',yrs+' letech'],
+   ['Za období vyplaceno',short(out.paid)],
+   ['Zůstatek po období',short(out.balance)]
+  ]);
+  $('rentModeNote').textContent='Průběžná renta: simulujeme jen dalších '+yrs+' let. Limit ukazuje počáteční rentu, při níž na konci období model zachová kupní sílu původního kapitálu. Potom je potřeba znovu přepočítat další etapu podle skutečného stavu portfolia.';
+  $('rStatus').textContent=out.term?'⚠ Při požadované rentě se kapitál vyčerpá již během této etapy: přibližně po '+F(out.end/12,1)+' letech.':base.balance+0.0001<floor?'⚠ Při zadaném výnosu nedokáže portfolio udržet kupní sílu původního kapitálu ani bez výběrů. Orientační renta se zachováním kupní síly je 0 Kč.':out.balance+0.0001<floor?'⚠ Po '+yrs+' letech bude kupní síla zbývajícího kapitálu nižší než na začátku. Pro její zachování vychází modelová počáteční renta nejvýše '+money(limit)+' měsíčně.':'Po '+yrs+' letech model zachovává kupní sílu kapitálu. Před další etapou doporučujeme rentu přepočítat z aktuálního zůstatku.';
+ }else{
+  showKpis('rKpis',[
+   ['Max. počáteční měsíční renta',money(limit)+'/měs.'],
+   ['Zvolená doba čerpání',yrs+' let'],
+   ['Za období vyplaceno',short(out.paid)],
+   ['Zůstatek na konci období',short(out.balance)]
+  ]);
+  $('rentModeNote').textContent='Na zvolenou dobu: simulujeme výplaty po dobu '+yrs+' let. Maximální renta ukazuje počáteční měsíční částku, při níž lze v modelu celý kapitál během této doby postupně vyčerpat.';
+  $('rStatus').textContent=out.term?'⚠ Požadovaná renta je příliš vysoká: kapitál se vyčerpá již přibližně po '+F(out.end/12,1)+' letech, tedy dříve než za '+yrs+' let.':'Při požadované rentě model předpokládá po '+yrs+' letech zbývající kapitál '+money(out.balance)+'. Skutečné výnosy, inflace a poplatky se mohou lišit.';
+ }
+ svgChart('rChart',out.rows,['balance','paid'],['#d6a141','#65aa97'],months);
+}
 document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(v=>v.classList.toggle('sel',v===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('sel',v.id===b.dataset.to));if(b.dataset.to==='r')calculateRent()});
 $('model').onclick=()=>preset(false);$('historical').onclick=()=>preset(true);
 function preset(hist){assets.forEach(a=>{$('r_'+a.id).value=hist&&a.hist!==null?F(a.hist,3).replace(',','.'):a.rate});$('model').classList.toggle('sel',!hist);$('historical').classList.toggle('sel',hist);$('presetNote').textContent=hist?'⚠ Historický výnos v Kč je pouze matematický CAGR, nikoliv předpověď. Bitcoin má 11letou a fond mnohem kratší historii; u fondu zůstává 7 % modelově.':'Modelové předpoklady po průběžných nákladech jsou upravitelné a nezaručené.';calculate()}
