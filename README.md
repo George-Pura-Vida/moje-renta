@@ -1,10 +1,12 @@
 # Moje renta
 
-Samostatná statická webová aplikace pro web `https://moje-renta.jirijanousek.cz/`.
+Webová aplikace s PHP přihlášením pro web `https://moje-renta.jirijanousek.cz/`.
 
 ## Obsah
 
-- `index.html` – responzivní kalkulačka diverzifikace portfolia, scénáře výnosů a inflace, vstupní poplatky, měsíční renta a doba čerpání.
+- `index.php` – vyžaduje platné přihlášení; `app.view.php` a `app.js` obsahují kalkulačku portfolia, inflaci a rentu.
+- `account.php`, `admin.php` a `auth/` – samostatná registrace a bezpečná správa účtů pro Moje renta.
+- `README-auth.md` – nezbytné podmínky zabezpečeného nasazení na Webkitty.
 - `CNAME` – informativní údaj o cílové doméně. Pro hosting Webkitty **není** GitHub Pages ani soubor CNAME potřeba, doménu přiřaďte v administraci hostingu.
 
 ## Nasazení na Webkitty
@@ -16,7 +18,7 @@ Samostatná statická webová aplikace pro web `https://moje-renta.jirijanousek.
    - Clone URL: `https://github.com/George-Pura-Vida/moje-renta.git`
    - Repository Path: přesný kořenový adresář vytvořené subdomény (nikoli adresář hlavního webu).
    - Repository Name: `moje-renta`.
-5. Vyberte deployment branch `main`, potvrďte **Update**.
+5. Vyberte deployment branch `main`, potvrďte **Update**; před aktivací účtů ověřte PHP 8.1+, PDO SQLite, HTTPS a mail().
 6. Pro aktualizace z GitHubu použijte **Options → Manage → Deploy**.
 7. Ověřte dostupnost HTTPS stránky včetně platného SSL certifikátu.
 
@@ -38,3 +40,5 @@ Všechny částky v korunách. Historické ceny kovů a Bitcoinu jsou přepočí
 - Platba probíhá výhradně v bankovnictví uživatele; aplikace platbu neodesílá ani nepotvrzuje přijetí. Používání kalkulačky není příspěvkem podmíněno.
 
 Patička kalkulačky a Podpory obsahuje právní a investiční upozornění a odkaz na jirijanousek.cz. Žádný e-mailový odkaz.
+
+**Poznámka:** Kalkulačka vyžaduje přihlášení, dobrovolná podpora zůstává veřejná a platba není podmínkou používání aplikace.

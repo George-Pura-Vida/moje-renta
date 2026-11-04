@@ -1,0 +1,34 @@
+name: Auth and calculator checks
+on:
+  push:
+    branches: [main, feature/accounts-php]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PHP syntax
+        run: |
+          php -v
+          find . -type f -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: JavaScript syntax
+        run: |
+          node --check app.js
+          node --check account.js
+          node --check account-session.js
+          node --check support.js
+          node --check support-payment.js
+      - name: Registration and login integration
+        run: |
+          node auth.integration.test.mjs
+      - name: Security file layout
+        run: |
+          test -f index.php
+          test -f app.view.php
+          test -f auth/bootstrap.php
+          test -f auth/mail-templates.json
+          test ! -f index.html
+          ! find . -type f \( -name '*.sqlite' -o -name '*.db' -o -name '.env' \) | grep .
