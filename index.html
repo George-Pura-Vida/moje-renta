@@ -5,10 +5,22 @@
 @media(max-width:900px){.columns{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.kpis{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.wrap{padding:10px}.top .tiny{display:none}.hero{display:block;padding:21px;border-radius:16px}.hero b{display:block;margin-top:12px}.card{padding:16px;border-radius:14px}.asset{gap:6px;grid-template-columns:minmax(100px,1.3fr) minmax(84px,1fr) minmax(68px,.72fr)}.field{font-size:12px;padding:8px 5px}.gridR{grid-template-columns:repeat(2,1fr)}.kpis{gap:8px}.kpi{padding:12px}.kpi strong{font-size:18px}.footer{display:block}}#pdfReport{display:none}.report-head{display:flex;justify-content:space-between;align-items:center;border-bottom:3px solid #d6a141;padding-bottom:13px;margin-bottom:15px}.report-brand{font-size:23px;font-weight:900;letter-spacing:-.05em;color:#16243a}.report-brand span{color:#b58221}.report-sub{font-size:11px;color:#6b7b90}.report-title{font-size:16px;font-weight:850;margin:8px 0 11px}.report-portfolio{display:grid;grid-template-columns:210px 1fr;gap:18px;align-items:center}.report-donut{width:194px;height:194px;position:relative;display:flex;align-items:center;justify-content:center}.report-donut svg{position:absolute;inset:0;width:100%;height:100%}.report-center{z-index:1;text-align:center;font-weight:800;font-size:17px}.report-center small{display:block;color:#748498;font-size:10px;font-weight:500}.report-legend{display:grid;grid-template-columns:1fr;gap:7px}.report-legend .line{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e9edf1;padding-bottom:4px;font-size:11px}.report-legend .line span{display:flex;align-items:center;gap:5px}.report-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.report-kpis .kpi{padding:10px}.report-kpis .kpi strong{font-size:15px}.report-chart{width:100%;height:auto;display:block}.report-renta{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}.report-renta .kpi{padding:9px}.report-renta .kpi strong{font-size:14px}.report-metadata{font-size:11px;color:#587085;line-height:1.5;margin:8px 0}.report-foot{font-size:9px;color:#627385;border-top:1px solid #cfd9e4;padding-top:9px;margin-top:12px;line-height:1.45}@media print{@page{size:A4 portrait;margin:12mm}html,body{background:#fff!important;color:#17263a!important;font-size:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}.wrap{display:none!important}#pdfReport{display:block!important;max-width:100%;margin:0;page-break-inside:avoid}.report-chart{max-height:208px}.report-title{font-size:14px}.report-donut{width:165px;height:165px}.report-portfolio{grid-template-columns:180px 1fr}.report-head{margin-bottom:8px}.report-kpis{margin-top:6px}.report-renta{margin-top:5px}.report-foot{margin-top:8px}.kpi{break-inside:avoid}}
 
 .footer{gap:12px;flex-wrap:wrap;align-items:center}.footer nav{display:flex;gap:16px;flex-wrap:wrap}.foot p{margin:8px 0 0}a:focus-visible{outline:3px solid #ddb65c;outline-offset:3px}.top-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.support-link{text-decoration:none;display:inline-block;background:#fff4dc;color:#755117;border:1px solid #e5c787;border-radius:9px;padding:8px 12px;font-size:12px;font-weight:750}.brand-link{color:inherit;text-decoration:none}@media(max-width:600px){.footer nav{margin-top:8px}.top{flex-wrap:wrap}}
+
+.menu-toggle{display:none;align-items:center;gap:9px;justify-content:center;background:#17263d;color:white;border:0;border-radius:11px;min-height:44px;padding:9px 13px;font-size:13px;font-weight:800;cursor:pointer}
+.menu-toggle .hamburger-icon{font-size:22px;line-height:1}
+.tabs .menu-support{margin-left:auto;display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:10px 15px;background:#80324d!important;color:#fff!important;border:1px solid #80324d;border-radius:11px;font-weight:800;font-size:12px;text-decoration:none;box-shadow:0 3px 9px #55203420}
+.tabs .menu-support:hover,.tabs .menu-support:focus-visible{background:#64253b!important;color:white!important}
+@media(max-width:760px){
+ .top{flex-wrap:nowrap}.top-actions .tiny{display:none}.top-actions .support-link{display:none}.menu-toggle{display:inline-flex}
+ .tabs{display:none;flex-direction:column;align-items:stretch;gap:7px;background:#fff;border:1px solid #e3e9f0;padding:12px;border-radius:15px;box-shadow:0 9px 22px #17263d13;margin:10px 0 18px}
+ .tabs.is-open{display:flex}
+ .tabs button,.tabs .menu-support{display:flex;width:100%;min-height:46px;margin:0;align-items:center;justify-content:flex-start;text-align:left}
+ .tabs .menu-support{margin-top:4px}
+}
 </style></head><body><div class="wrap">
-<div class="top"><div class="brand">◉ MOJE <span>RENTA</span></div><div class="top-actions"><span class="tiny">Jiří Janoušek • Všechny výpočty v českých korunách</span><a class="support-link" href="support.html">💛 Podpora</a></div></div>
+<div class="top"><div class="brand">◉ MOJE <span>RENTA</span></div><div class="top-actions"><span class="tiny">Jiří Janoušek • Všechny výpočty v českých korunách</span><button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainMenu" aria-label="Otevřít nabídku"><span class="hamburger-icon" aria-hidden="true">☰</span><span>Menu</span></button></div></div>
 <div class="hero"><div><small>Investice s plánem</small><h1>Od portfolia k vlastní rentě.</h1><p>Rozložení investic, dlouhodobé výnosy v Kč, poplatky a přehled, kolik peněz si můžete měsíčně vyplácet.</p></div><div><b id="heroSum">10 000 Kč</b><div class="tiny" style="color:#c9d3dc">Celkem pravidelně měsíčně</div></div></div>
-<nav class="tabs"><button class="sel" data-to="p">◉ Moje portfolio</button><button data-to="r">◷ Moje renta</button><button data-to="h">▤ Historie v Kč</button></nav>
+<nav class="tabs" id="mainMenu" aria-label="Hlavní nabídka"><button type="button" class="sel" data-to="p">◉ Moje portfolio</button><button type="button" data-to="r">◷ Moje renta</button><button type="button" data-to="h">▤ Historie v Kč</button><a class="menu-support" href="support.html">❤️ Podpořte projekt Moje renta</a></nav>
 <section class="view sel" id="p">
 <div class="columns"><div class="card"><h2>🎯 Diverzifikace portfolia</h2><div class="donut" id="donut"><svg id="donutSvg" viewBox="0 0 240 240" role="img" aria-label="Barevné rozdělení měsíčních vkladů"></svg><div class="donutlabel"><b id="donutSum">10 000 Kč</b><span>měsíční úložka</span></div></div><div class="legend" id="legend"></div><p class="note">Výchozí rozdělení: 25 % zlato, 25 % stříbro, 25 % Permanentní fond, 10 % Bitcoin a 15 % hotovost. Donut reaguje na změny vkladů.</p></div>
 <div class="card"><h2>✏️ Měsíční vklady a roční výnosy</h2><div class="asset" style="color:#778899;font-size:10px;font-weight:800"><span>Aktivum</span><span>Měsíčně Kč</span><span>Výnos %</span></div><div id="inputs"></div><div class="chips"><button id="model" class="chip sel">Modelové výnosy</button><button id="historical" class="chip">Historické CAGR v Kč</button></div><p class="note" id="presetNote">Výchozí výnosy jsou předpoklady, nikoli záruka. U fondu není k dispozici 20letá historie.</p></div></div>
@@ -137,7 +149,22 @@ function calculateRent(){
  }
  svgChart('rChart',out.rows,['balance','paid'],['#d6a141','#65aa97'],months);$('reportRenta').innerHTML=$('rKpis').innerHTML;$('reportRentParams').textContent='Základ renty: '+money(cap)+' • Požadovaná počáteční měsíční renta: '+money(want)+' • Čerpání: '+(rolling?'průběžné, revize po '+yrs+' letech':'po dobu '+yrs+' let')+' • Výnos v čerpání: '+F(r,1)+' % ročně • Inflace: '+F(inf,1)+' % ročně'+(ix?' • Renta roste o inflaci':' • Renta je nominálně fixní');
 }
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tabs button').forEach(v=>v.classList.toggle('sel',v===b));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('sel',v.id===b.dataset.to));if(b.dataset.to==='r')calculateRent()});
+function setMenu(open){
+ $('mainMenu').classList.toggle('is-open',open);
+ $('menuToggle').setAttribute('aria-expanded',String(open));
+ $('menuToggle').setAttribute('aria-label',open?'Zavřít nabídku':'Otevřít nabídku');
+}
+function showTab(tab){
+ document.querySelectorAll('.tabs button[data-to]').forEach(b=>b.classList.toggle('sel',b.dataset.to===tab));
+ document.querySelectorAll('.view').forEach(v=>v.classList.toggle('sel',v.id===tab));
+ setMenu(false);if(tab==='r')calculateRent();
+}
+$('menuToggle').onclick=()=>setMenu($('menuToggle').getAttribute('aria-expanded')!=='true');
+document.querySelectorAll('.tabs button[data-to]').forEach(b=>b.onclick=()=>showTab(b.dataset.to));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('menuToggle').getAttribute('aria-expanded')==='true'){setMenu(false);$('menuToggle').focus()}});
+var entryTab=(window.location&&window.location.hash?window.location.hash.slice(1):'');
+if(['p','r','h'].includes(entryTab))showTab(entryTab);
+
 $('model').onclick=()=>preset(false);$('historical').onclick=()=>preset(true);
 function preset(hist){assets.forEach(a=>{$('r_'+a.id).value=hist&&a.hist!==null?F(a.hist,3).replace(',','.'):a.rate});$('model').classList.toggle('sel',!hist);$('historical').classList.toggle('sel',hist);$('presetNote').textContent=hist?'⚠ Historický výnos v Kč je pouze matematický CAGR, nikoliv předpověď. Bitcoin má 11letou a fond mnohem kratší historii; u fondu zůstává 7 % modelově.':'Modelové předpoklady po průběžných nákladech jsou upravitelné a nezaručené.';calculate()}
 document.querySelectorAll('#p input,#p select').forEach(el=>el.addEventListener('input',calculate));document.querySelectorAll('#r input,#r select').forEach(el=>el.addEventListener('input',calculateRent));
