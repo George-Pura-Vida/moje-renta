@@ -29,3 +29,12 @@ Oficiální návody:
 ## Model a upozornění
 
 Všechny částky v korunách. Historické ceny kovů a Bitcoinu jsou přepočítány historickými průměrnými ročními kurzy USD/CZK pro orientační porovnání. Pro přesné ocenění konkrétního nákupu je potřebný denní kurz stejného dne. Výnosy nejsou zaručené; rentový model předpokládá konstantní roční výnos a nezahrnuje sekvenci tržních propadů, transakční náklady při čerpání ani daně.
+
+## Podpora aplikace
+
+- `support.html` – dobrovolná podpora, předvolby 100 / 250 / 500 / 1 000 Kč a vlastní částka.
+- `support-payment.js` – validace částky a lokální sestavení QR Platby (SPD) pro účet 223366333/2010.
+- `support.js` a `vendor/qrcodegen.js` – QR kód bez externích služeb, stažení PNG a kopírování údajů. Licence QR knihovny je zachována v souboru.
+- Platba probíhá výhradně v bankovnictví uživatele; aplikace platbu neodesílá ani nepotvrzuje přijetí. Používání kalkulačky není příspěvkem podmíněno.
+
+Patička kalkulačky a Podpory obsahuje právní a investiční upozornění a odkaz na jirijanousek.cz. Žádný e-mailový odkaz.
