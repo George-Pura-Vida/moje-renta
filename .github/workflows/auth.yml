@@ -21,6 +21,9 @@ jobs:
           node --check account-session.js
           node --check support.js
           node --check support-payment.js
+          node --check vendor/qrcodegen.js
+      - name: Fio support UI and QR regression tests
+        run: node --test support.test.mjs
       - name: Registration and login integration
         run: |
           node auth.integration.test.mjs
