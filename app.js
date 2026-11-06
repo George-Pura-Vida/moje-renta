@@ -95,6 +95,8 @@ function showTab(tab){
  setMenu(false);if(tab==='r')calculateRent();
 }
 $('menuToggle').onclick=()=>setMenu($('menuToggle').getAttribute('aria-expanded')!=='true');
+// JJ mobile menu outside-click: close the fixed drawer without changing any calculator state.
+document.addEventListener('pointerdown',e=>{const menu=$('mainMenu');if(menu.classList.contains('is-open')&&!e.target.closest('#mainMenu')&&!e.target.closest('#menuToggle'))setMenu(false);});
 document.querySelectorAll('.tabs button[data-to]').forEach(b=>b.onclick=()=>showTab(b.dataset.to));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('menuToggle').getAttribute('aria-expanded')==='true'){setMenu(false);$('menuToggle').focus()}});
 var entryTab=(window.location&&window.location.hash?window.location.hash.slice(1):'');
