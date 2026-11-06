@@ -27,6 +27,24 @@ if (!defined('MOJE_RENTA_AUTH_RENDER')) { http_response_code(403); exit('Příst
 .menu-logout{display:inline-flex;margin:0;padding:0}.menu-logout button{display:inline-flex;align-items:center;min-height:44px;border:1px solid #e5e8ee;border-radius:11px;padding:10px 13px;color:#52667c;background:#fff;font-size:12px;font-weight:750}
 .menu-logout button:hover{background:#f0f4f8}
 @media(max-width:760px){.tabs .menu-account,.tabs .menu-logout{width:100%}.tabs .menu-account,.menu-logout button{display:flex;justify-content:flex-start}.menu-logout button{width:100%}}
+
+/* JJ UI 2026-11-06: sticky mobile menu + polished panels */
+.hero{background:linear-gradient(118deg,#101d30 0%,#243d58 68%,#354d64 100%);border:1px solid #405776;box-shadow:0 17px 38px #142b4427;position:relative}
+.hero::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,#e6be73,#b98c3f,transparent);border-radius:20px 20px 0 0}
+.card{border-color:#dfe5ed;box-shadow:0 9px 30px #182d4810;transition:box-shadow .18s,border-color .18s}
+.card:hover{border-color:#cbd7e5;box-shadow:0 13px 36px #182d481a}
+.tabs button,.tabs a,.menu-toggle{transition:background-color .18s,border-color .18s,box-shadow .18s}
+.tabs button:focus-visible,.tabs a:focus-visible,.menu-toggle:focus-visible{outline:3px solid #d6a141;outline-offset:3px}
+@media(max-width:760px){
+ .top{position:sticky;top:0;z-index:81;min-height:64px;margin:0 -4px 12px;padding:9px 12px;align-items:center;border-radius:13px;background:rgba(250,252,255,.97);border:1px solid #dfe6ef;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);box-shadow:0 6px 22px #14283b1a}
+ .top .brand{font-size:clamp(15px,4.1vw,18px);letter-spacing:-.035em}
+ .menu-toggle{display:inline-flex;min-height:46px;min-width:89px;gap:7px;background:#172d49;color:white;border:1px solid #385576;border-radius:12px;box-shadow:0 4px 13px #17263d28}
+ .menu-toggle:hover{background:#274566}
+ .tabs{position:fixed;top:calc(env(safe-area-inset-top) + 68px);right:12px;left:12px;z-index:83;width:auto;max-width:420px;max-height:calc(100dvh - 82px);overflow-y:auto;overscroll-behavior:contain;margin:0 0 0 auto;padding:14px;border-radius:17px;border:1px solid #d3dce7;box-shadow:0 24px 68px #0e233b51}
+ body:has(.tabs.is-open)::before{content:"";position:fixed;inset:0;z-index:78;background:rgba(12,24,42,.43)}
+}
+@media print{.top{position:static;box-shadow:none}.tabs{position:static}}
+@media(prefers-reduced-motion:reduce){.card,.tabs button,.tabs a,.menu-toggle{transition:none}}
 </style><link rel="stylesheet" href="/privacy.css?v=2"><script type="module" src="/privacy.js?v=2"></script></head><body><div class="wrap">
 <div class="top"><div class="brand">◉ MOJE <span>RENTA</span></div><div class="top-actions"><span class="tiny">Jiří Janoušek • Všechny výpočty v českých korunách</span><button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="mainMenu" aria-label="Otevřít nabídku"><span class="hamburger-icon" aria-hidden="true">☰</span><span>Menu</span></button></div></div>
 <div class="hero"><div><small>Investice s plánem</small><h1>Od portfolia k vlastní rentě.</h1><p>Rozložení investic, dlouhodobé výnosy v Kč, poplatky a přehled, kolik peněz si můžete měsíčně vyplácet.</p></div><div><b id="heroSum">10 000 Kč</b><div class="tiny" style="color:#c9d3dc">Celkem pravidelně měsíčně</div></div></div>
